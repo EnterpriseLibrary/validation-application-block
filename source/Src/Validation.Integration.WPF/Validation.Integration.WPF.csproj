@@ -1,0 +1,132 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyName>EnterpriseLibrary.Validation.Integration.WPF</AssemblyName>
+    <RootNamespace>EnterpriseLibrary.Validation.Integration.WPF</RootNamespace>
+    <AssemblyTitle>Enterprise Library Validation Application Block Integration with WPF</AssemblyTitle>
+
+    <PackageId>EnterpriseLibrary.Validation.Integration.WPF</PackageId>
+    <Title>Enterprise Library Validation Application Block Integration with WPF</Title>
+    <Description>This component allows the Validation Application Block to integrate with WPF.</Description>
+    <Summary>This component allows the Validation Application Block to integrate with WPF.</Summary>
+    <PackageTags>entlib entlib6 Enterprise Library validation validator vab WPF presentation foundation LOB futures OSS</PackageTags>
+
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\EnterpriseLibrary.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <EntLibCommon>..\..\..\..\Common\source\Src\Common\Common.csproj</EntLibCommon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
+    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+	
+	<ProjectReference Include="..\Validation\Validation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+    
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+    <Reference Include="PresentationCore" />
+	<Reference Include="PresentationFramework" />
+	<Reference Include="System.Xaml" />
+	<Reference Include="System.Data.DataSetExtensions" />
+	<Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+
+    <None Include="..\..\Validation.licenseheader">
+      <Link>Validation.licenseheader</Link>
+    </None>
+
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\NuGet\Readme.txt">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath></PackagePath>
+    </Content>
+
+    <Content Include="..\..\NuGet\tools\SharedCommon\install.ps1">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath>tools</PackagePath>
+    </Content>
+
+    <Content Include="..\..\NuGet\tools\SharedCommon\Utils.psm1">
+      <Pack>true</Pack>
+      <Visible>False</Visible>
+      <PackagePath>tools</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+    
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+    
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputPath>$(SolutionDir)..\bin\$(Configuration)\</OutputPath>
+    <DocumentationFile>$(SolutionDir)..\bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+    <CodeAnalysisRuleSet>..\..\EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+</Project>

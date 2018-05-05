@@ -1,0 +1,129 @@
+﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
+using System.Reflection;
+using EnterpriseLibrary.Validation.Properties;
+using EnterpriseLibrary.Validation.TestSupport;
+using EnterpriseLibrary.Validation.TestSupport.TestClasses;
+using EnterpriseLibrary.Validation.Validators;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace EnterpriseLibrary.Validation.Tests
+{
+    [TestClass]
+    public class MethodValueAccessFixture
+    {
+        [TestMethod]
+        public void CanGetValueFromMethodForInstanceOfDeclaringClass()
+        {
+            MethodInfo methodInfo = typeof(BaseTestDomainObject).GetMethod("Method1");
+            ValueAccess valueAccess = new MethodValueAccess(methodInfo);
+            BaseTestDomainObject domainObject = new BaseTestDomainObject();
+
+            object value;
+            string valueAccessRetrievalFailure;
+            bool status = valueAccess.GetValue(domainObject, out value, out valueAccessRetrievalFailure);
+
+            Assert.IsTrue(status);
+            Assert.AreEqual(BaseTestDomainObject.Base1Value, value);
+        }
+
+        [TestMethod]
+        public void CanGetValueFromMethodForInstanceOfDerivedClass()
+        {
+            MethodInfo methodInfo = typeof(BaseTestDomainObject).GetMethod("Method1");
+            ValueAccess valueAccess = new MethodValueAccess(methodInfo);
+            BaseTestDomainObject domainObject = new DerivedTestDomainObject();
+
+            object value;
+            string valueAccessRetrievalFailure;
+            bool status = valueAccess.GetValue(domainObject, out value, out valueAccessRetrievalFailure);
+
+            Assert.IsTrue(status);
+            Assert.AreEqual(BaseTestDomainObject.Base1Value, value);
+        }
+
+        [TestMethod]
+        public void CanGetValueFromOverridenMethodForInstanceOfDerivedClass()
+        {
+            MethodInfo methodInfo = typeof(BaseTestDomainObject).GetMethod("Method2");
+            ValueAccess valueAccess = new MethodValueAccess(methodInfo);
+            BaseTestDomainObject domainObject = new DerivedTestDomainObject();
+
+            object value;
+            string valueAccessRetrievalFailure;
+            bool status = valueAccess.GetValue(domainObject, out value, out valueAccessRetrievalFailure);
+
+            Assert.IsTrue(status);
+            Assert.AreEqual(DerivedTestDomainObject.Derived2Value, value);
+        }
+
+        [TestMethod]
+        public void RetrievalOfValueForInstanceOfDerivedTypeThroughBaseAliasedMethodReturnsValueFromInheritedMethod()
+        {
+            MethodInfo methodInfo = typeof(BaseTestDomainObject).GetMethod("Method3");
+            ValueAccess valueAccess = new MethodValueAccess(methodInfo);
+            BaseTestDomainObject domainObject = new DerivedTestDomainObject();
+
+            object value;
+            string valueAccessRetrievalFailure;
+            bool status = valueAccess.GetValue(domainObject, out value, out valueAccessRetrievalFailure);
+
+            Assert.IsTrue(status);
+            Assert.AreEqual(BaseTestDomainObject.Base3Value, value);
+        }
+
+        [TestMethod]
+        public void RetrievalOfValueForInstanceOfDerivedTypeThroughNewAliasedMethodReturnsValueFromNewMethod()
+        {
+            MethodInfo methodInfo = typeof(DerivedTestDomainObject).GetMethod("Method3");
+            ValueAccess valueAccess = new MethodValueAccess(methodInfo);
+            BaseTestDomainObject domainObject = new DerivedTestDomainObject();
+
+            object value;
+            string valueAccessRetrievalFailure;
+            bool status = valueAccess.GetValue(domainObject, out value, out valueAccessRetrievalFailure);
+
+            Assert.IsTrue(status);
+            Assert.AreEqual(DerivedTestDomainObject.Derived3Value, value);
+        }
+
+        [TestMethod]
+        public void RetrievalOfValueForInstanceOfNonRelatedTypeReturnsFailure()
+        {
+            MethodInfo methodInfo = typeof(BaseTestDomainObject).GetMethod("Method1");
+            ValueAccess valueAccess = new MethodValueAccess(methodInfo);
+
+            object value;
+            string valueAccessRetrievalFailure;
+            bool status = valueAccess.GetValue("a string", out value, out valueAccessRetrievalFailure);
+
+            Assert.IsFalse(status);
+            Assert.IsNull(value);
+            Assert.IsTrue(TemplateStringTester.IsMatch(Resources.ErrorValueAccessInvalidType, valueAccessRetrievalFailure));
+        }
+
+        [TestMethod]
+        public void RetrievalOfValueForNullReferenceReturnsFailure()
+        {
+            MethodInfo methodInfo = typeof(BaseTestDomainObject).GetMethod("Method1");
+            ValueAccess valueAccess = new MethodValueAccess(methodInfo);
+
+            object value;
+            string valueAccessRetrievalFailure;
+            bool status = valueAccess.GetValue(null, out value, out valueAccessRetrievalFailure);
+
+            Assert.IsFalse(status);
+            Assert.IsNull(value);
+            Assert.IsTrue(TemplateStringTester.IsMatch(Resources.ErrorValueAccessNull, valueAccessRetrievalFailure));
+        }
+
+        [TestMethod]
+        public void CanGetKeyFromValueAccess()
+        {
+            MethodInfo methodInfo = typeof(BaseTestDomainObject).GetMethod("Method3");
+            ValueAccess valueAccess = new MethodValueAccess(methodInfo);
+
+            Assert.AreEqual("Method3", valueAccess.Key);
+        }
+    }
+}

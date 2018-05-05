@@ -1,0 +1,181 @@
+﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using EnterpriseLibrary.Common.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace EnterpriseLibrary.Validation.Tests
+{
+    [TestClass]
+    public class GivenValidatorCreatedByValidationAttributeValidatorBuilderForTypeWithValidationAttributes
+    {
+        private Validator validator;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            ValidationFactory.SetDefaultConfigurationValidatorFactory(new ConfigurationValidatorFactory(new SystemConfigurationSource(false)));
+            this.validator =
+                new ValidationAttributeValidatorBuilder(
+                    new MemberAccessValidatorBuilderFactory(),
+                    ValidationFactory.DefaultCompositeValidatorFactory)
+                    .CreateValidator(typeof(TypeWithValidationAttributes));
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            ValidationFactory.Reset();
+        }
+
+        [TestMethod]
+        public void WhenValidatingValidTarget_ThenGetsValidResult()
+        {
+            var instance = new TypeWithValidationAttributes { MyProperty = 6, MyField = "aaaaaa" };
+
+            var results = this.validator.Validate(instance);
+
+            Assert.IsTrue(results.IsValid);
+        }
+
+        [TestMethod]
+        public void WhenValidatingTargetWithInvalidField_ThenGetsNotValidResultWithResultsForEachFailedRule()
+        {
+            var instance = new TypeWithValidationAttributes { MyProperty = 6, MyField = "some invalid string" };
+
+            var results = this.validator.Validate(instance);
+
+            Assert.IsFalse(results.IsValid);
+            Assert.AreEqual(2, results.Count);
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyField").Any(vr => vr.Message == "regex"));
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyField").Any(vr => vr.Message == "length"));
+        }
+
+        [TestMethod]
+        public void WhenValidatingTargetWithInvalidProperty_ThenGetsNotValidResultWithResultsForEachFailedRule()
+        {
+            var instance = new TypeWithValidationAttributes { MyProperty = 0, MyField = "aaaaa" };
+
+            var results = this.validator.Validate(instance);
+
+            Assert.IsFalse(results.IsValid);
+            Assert.AreEqual(1, results.Count);
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyProperty").Any(vr => vr.Message == "range"));
+        }
+
+        [TestMethod]
+        public void WhenValidatingTargetWithInvalidFieldAndProperty_ThenGetsNotValidResultWithResultsForEachFailedRule()
+        {
+            var instance = new TypeWithValidationAttributes { MyProperty = 0, MyField = "some invalid string" };
+
+            var results = this.validator.Validate(instance);
+
+            Assert.IsFalse(results.IsValid);
+            Assert.AreEqual(3, results.Count);
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyField").Any(vr => vr.Message == "regex"));
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyField").Any(vr => vr.Message == "length"));
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyProperty").Any(vr => vr.Message == "range"));
+        }
+
+        public class TypeWithValidationAttributes
+        {
+            [Range(4, 10, ErrorMessage = "range")]
+            public int MyProperty { get; set; }
+
+            [RegularExpression("a*", ErrorMessage = "regex")]
+            [StringLength(10, ErrorMessage = "length")]
+            public string MyField;
+        }
+    }
+
+    [TestClass]
+    public class GivenValidatorCreatedByValidationAttributeValidatorBuilderForTypeWithValidationAttributesOnMetadataType
+    {
+        private Validator validator;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            ValidationFactory.SetDefaultConfigurationValidatorFactory(new ConfigurationValidatorFactory(new SystemConfigurationSource(false)));
+            this.validator =
+                new ValidationAttributeValidatorBuilder(
+                    new MemberAccessValidatorBuilderFactory(),
+                    ValidationFactory.DefaultCompositeValidatorFactory)
+                    .CreateValidator(typeof(TypeWithValidationAttributes));
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            ValidationFactory.Reset();
+        }
+
+        [TestMethod]
+        public void WhenValidatingValidTarget_ThenGetsValidResult()
+        {
+            var instance = new TypeWithValidationAttributes { MyProperty = 6, MyField = "aaaaaa" };
+
+            var results = this.validator.Validate(instance);
+
+            Assert.IsTrue(results.IsValid);
+        }
+
+        [TestMethod]
+        public void WhenValidatingTargetWithInvalidField_ThenGetsNotValidResultWithResultsForEachFailedRule()
+        {
+            var instance = new TypeWithValidationAttributes { MyProperty = 6, MyField = "some invalid string" };
+
+            var results = this.validator.Validate(instance);
+
+            Assert.IsFalse(results.IsValid);
+            Assert.AreEqual(2, results.Count);
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyField").Any(vr => vr.Message == "regex"));
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyField").Any(vr => vr.Message == "length"));
+        }
+
+        [TestMethod]
+        public void WhenValidatingTargetWithInvalidProperty_ThenGetsNotValidResultWithResultsForEachFailedRule()
+        {
+            var instance = new TypeWithValidationAttributes { MyProperty = 0, MyField = "aaaaa" };
+
+            var results = this.validator.Validate(instance);
+
+            Assert.IsFalse(results.IsValid);
+            Assert.AreEqual(1, results.Count);
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyProperty").Any(vr => vr.Message == "range"));
+        }
+
+        [TestMethod]
+        public void WhenValidatingTargetWithInvalidFieldAndProperty_ThenGetsNotValidResultWithResultsForEachFailedRule()
+        {
+            var instance = new TypeWithValidationAttributes { MyProperty = 0, MyField = "some invalid string" };
+
+            var results = this.validator.Validate(instance);
+
+            Assert.IsFalse(results.IsValid);
+            Assert.AreEqual(3, results.Count);
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyField").Any(vr => vr.Message == "regex"));
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyField").Any(vr => vr.Message == "length"));
+            Assert.IsTrue(results.Where(vr => vr.Key == "MyProperty").Any(vr => vr.Message == "range"));
+        }
+
+        [MetadataType(typeof(TypeWithValidationAttributesMetadata))]
+        public class TypeWithValidationAttributes
+        {
+            public class TypeWithValidationAttributesMetadata
+            {
+                [Range(4, 10, ErrorMessage = "range")]
+                public int MyProperty { get; set; }
+
+                [RegularExpression("a*", ErrorMessage = "regex")]
+                [StringLength(10, ErrorMessage = "length")]
+                public string MyField;
+            }
+
+            public int MyProperty { get; set; }
+
+            public string MyField;
+        }
+    }
+}

@@ -1,0 +1,81 @@
+﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using EnterpriseLibrary.Validation.Properties;
+using EnterpriseLibrary.Validation.Validators;
+using EnterpriseLibrary.Common.Configuration.Design;
+using EnterpriseLibrary.Common.Configuration.Design.Validation;
+
+namespace EnterpriseLibrary.Validation.Configuration
+{
+    /// <summary>
+    /// Configuration object to describe an instance of class <see cref="StringLengthValidator"/>.
+    /// </summary>
+    /// <seealso cref="StringLengthValidator"/>
+    /// <seealso cref="ValidatorData"/>
+    [ResourceDescription(typeof(DesignResources), "StringLengthValidatorDataDescription")]
+    [ResourceDisplayName(typeof(DesignResources), "StringLengthValidatorDataDisplayName")]
+    public class StringLengthValidatorData : RangeValidatorData<int>
+    {
+        /// <summary>
+        /// <para>Initializes a new instance of the <see cref="StringLengthValidatorData"/> class.</para>
+        /// </summary>
+        public StringLengthValidatorData() { Type = typeof(StringLengthValidator); }
+
+        /// <summary>
+        /// <para>Initializes a new instance of the <see cref="StringLengthValidatorData"/> class with a name.</para>
+        /// </summary>
+        /// <param name="name">The name for the instance.</param>
+        public StringLengthValidatorData(string name)
+            : base(name, typeof(StringLengthValidator))
+        { }
+
+        /// <summary>
+        /// Creates the <see cref="StringLengthValidator"/> described by the configuration object.
+        /// </summary>
+        /// <param name="targetType">The type of object that will be validated by the validator.</param>
+        /// <returns>The created <see cref="StringLengthValidator"/>.</returns>
+        protected override Validator DoCreateValidator(Type targetType)
+        {
+            return new StringLengthValidator(this.LowerBound, 
+                this.LowerBoundType, 
+                this.UpperBound, 
+                this.UpperBoundType,
+                Negated);
+        }
+
+        /// <summary>
+        /// Overriden in order to apply validation attribute
+        /// </summary>
+        [Validation(ValidationDesignTime.Validators.RangeBoundValidator)]
+        public override int UpperBound
+        {
+            get
+            {
+                return base.UpperBound;
+            }
+            set
+            {
+                base.UpperBound = value;
+            }
+        }
+
+        /// <summary>
+        /// Overriden in order to apply validation attribute
+        /// </summary>
+        [Validation(ValidationDesignTime.Validators.RangeBoundValidator)]
+        public override int LowerBound
+        {
+            get
+            {
+                return base.LowerBound;
+            }
+            set
+            {
+                base.LowerBound = value;
+            }
+        }
+    }
+}

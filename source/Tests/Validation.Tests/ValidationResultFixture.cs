@@ -1,0 +1,52 @@
+﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
+using System.Collections.Generic;
+using EnterpriseLibrary.Validation.TestSupport.TestClasses;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace EnterpriseLibrary.Validation.Tests
+{
+    [TestClass]
+    public class ValidationResultFixture
+    {
+        [TestMethod]
+        public void CreatedValidationResultHasNoChildResults()
+        {
+            object target = new object();
+            Validator validator = new MockValidator(false);
+
+            ValidationResult validationResult = new ValidationResult("message", target, "key", "tag", validator);
+
+            Assert.AreEqual("message", validationResult.Message);
+            Assert.AreSame(target, validationResult.Target);
+            Assert.AreEqual("key", validationResult.Key);
+            Assert.AreEqual("tag", validationResult.Tag);
+            Assert.AreSame(validator, validationResult.Validator);
+            Assert.IsFalse(validationResult.NestedValidationResults.GetEnumerator().MoveNext());
+        }
+
+        [TestMethod]
+        public void CreatedValidationResultWithNestedResultsReturnsADifferentEnumerableWithThem()
+        {
+            object target = new object();
+            Validator validator = new MockValidator(false);
+            ValidationResult nestedResult1 = new ValidationResult("nested1", target, "key", "tag", validator);
+            ValidationResult nestedResult2 = new ValidationResult("nested2", target, "key", "tag", validator);
+            IList<ValidationResult> nestedResults = new List<ValidationResult>(new ValidationResult[] { nestedResult1, nestedResult2 });
+
+            ValidationResult validationResult = new ValidationResult("message", target, "key", "tag", validator, nestedResults);
+
+            Assert.AreEqual("message", validationResult.Message);
+            Assert.AreSame(target, validationResult.Target);
+            Assert.AreEqual("key", validationResult.Key);
+            Assert.AreEqual("tag", validationResult.Tag);
+            Assert.AreSame(validator, validationResult.Validator);
+            IEnumerator<ValidationResult> nestedResultsEnumerator = validationResult.NestedValidationResults.GetEnumerator();
+            Assert.IsTrue(nestedResultsEnumerator.MoveNext());
+            Assert.AreSame(nestedResult1, nestedResultsEnumerator.Current);
+            Assert.IsTrue(nestedResultsEnumerator.MoveNext());
+            Assert.AreSame(nestedResult2, nestedResultsEnumerator.Current);
+            Assert.IsFalse(nestedResultsEnumerator.MoveNext());
+        }
+    }
+}

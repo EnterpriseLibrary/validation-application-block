@@ -1,0 +1,81 @@
+﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
+using System.Collections.Generic;
+using System.Configuration;
+using EnterpriseLibrary.Common.Configuration;
+using EnterpriseLibrary.Common.TestSupport.Configuration;
+using EnterpriseLibrary.Validation.Configuration;
+using EnterpriseLibrary.Validation.Properties;
+using EnterpriseLibrary.Validation.TestSupport.Configuration;
+using EnterpriseLibrary.Validation.Validators;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace EnterpriseLibrary.Validation.Tests.Configuration
+{
+    [TestClass]
+    public class NotNotNullValidatorDataFixture
+    {
+        [TestMethod]
+        public void CanDeserializeSerializedInstance()
+        {
+            MockValidationSettings rwSettings = new MockValidationSettings();
+            ValidatorData rwValidatorData = new NotNullValidatorData("validator1");
+            rwSettings.Validators.Add(rwValidatorData);
+
+            IDictionary<string, ConfigurationSection> sections = new Dictionary<string, ConfigurationSection>();
+            sections[ValidationSettings.SectionName] = rwSettings;
+
+            using (ConfigurationFileHelper configurationFileHelper = new ConfigurationFileHelper(sections))
+            {
+                IConfigurationSource configurationSource = configurationFileHelper.ConfigurationSource;
+
+                MockValidationSettings roSettings = configurationSource.GetSection(ValidationSettings.SectionName) as MockValidationSettings;
+
+                Assert.IsNotNull(roSettings);
+                Assert.AreEqual(1, roSettings.Validators.Count);
+                Assert.AreEqual("validator1", roSettings.Validators.Get(0).Name);
+                Assert.AreSame(typeof(NotNullValidator), roSettings.Validators.Get(0).Type);
+            }
+        }
+
+        [TestMethod]
+        public void CanCreateValidatorFromConfigurationObject()
+        {
+            NotNullValidatorData rwValidatorData = new NotNullValidatorData("validator1");
+
+            Validator validator = ((IValidatorDescriptor)rwValidatorData).CreateValidator(null, null, null, null);
+
+            Assert.IsNotNull(validator);
+            Assert.AreSame(typeof(NotNullValidator), validator.GetType());
+            Assert.AreEqual(Resources.NonNullNonNegatedValidatorDefaultMessageTemplate, ((NotNullValidator)validator).MessageTemplate);
+            Assert.AreEqual(false, ((NotNullValidator)validator).Negated);
+        }
+
+        [TestMethod]
+        public void CanCreateNegatedValidatorFromConfigurationObject()
+        {
+            NotNullValidatorData rwValidatorData = new NotNullValidatorData("validator1");
+            rwValidatorData.Negated = true;
+
+            Validator validator = ((IValidatorDescriptor)rwValidatorData).CreateValidator(null, null, null, null);
+
+            Assert.IsNotNull(validator);
+            Assert.AreSame(typeof(NotNullValidator), validator.GetType());
+            Assert.AreEqual(Resources.NonNullNegatedValidatorDefaultMessageTemplate, ((NotNullValidator)validator).MessageTemplate);
+            Assert.AreEqual(true, ((NotNullValidator)validator).Negated);
+        }
+
+        [TestMethod]
+        public void CanCreateValidatorFromConfigurationObjectWithMessageTemplateOverride()
+        {
+            NotNullValidatorData rwValidatorData = new NotNullValidatorData("validator1");
+            rwValidatorData.MessageTemplate = "message template override";
+
+            Validator validator = ((IValidatorDescriptor)rwValidatorData).CreateValidator(null, null, null, null);
+
+            Assert.IsNotNull(validator);
+            Assert.AreSame(typeof(NotNullValidator), validator.GetType());
+            Assert.AreEqual("message template override", ((NotNullValidator)validator).MessageTemplate);
+        }
+    }
+}
