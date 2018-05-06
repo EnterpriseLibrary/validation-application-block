@@ -17,6 +17,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <SystemConfigurationConfigurationManagerVersion>4.4.*</SystemConfigurationConfigurationManagerVersion>
+    <SystemComponentModelAnnotationsVersion>4.4.*</SystemComponentModelAnnotationsVersion>
+    <MicrosoftAspNetCoreMvcCoreVersion>2.0.*</MicrosoftAspNetCoreMvcCoreVersion>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <!--In order to debug the EntLib dependencies open 'Validation (With Dependencies).sln' and change 'EntLibDependencyType' value to Project -->
     <EntLibDependencyType>Package</EntLibDependencyType>
     <EntLibCommonVersion>6.1.*</EntLibCommonVersion>
