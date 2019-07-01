@@ -1,6 +1,6 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
-namespace EnterpriseLibrary.Validation.Validators
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Validators
 {
     /// <summary>
     /// Base class for strongly-typed validators on simple values.

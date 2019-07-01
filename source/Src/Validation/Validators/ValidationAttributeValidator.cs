@@ -1,13 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Globalization;
-using EnterpriseLibrary.Validation.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Properties;
 
-namespace EnterpriseLibrary.Validation.Validators
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Validators
 {
     /// <summary>
     /// Validator wrapping a collection of <see cref="ValidationAttribute"/>.

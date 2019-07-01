@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Globalization;
-using EnterpriseLibrary.Validation.Integration.WinForms.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms.Properties;
 
-namespace EnterpriseLibrary.Validation.Integration.WinForms
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms
 {
     /// <summary>
     /// Returns the value from a control.

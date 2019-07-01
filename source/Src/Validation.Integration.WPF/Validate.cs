@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.ComponentModel;
@@ -7,9 +7,9 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
-using EnterpriseLibrary.Validation.Integration.WPF.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Properties;
 
-namespace EnterpriseLibrary.Validation.Integration.WPF
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF
 {
     /// <summary>
     /// Provides methods and attached properties that support validation of bindings using the 

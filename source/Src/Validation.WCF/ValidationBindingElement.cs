@@ -1,9 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.ServiceModel.Channels;
 using System.Xml;
 
-namespace EnterpriseLibrary.Validation.Integration.WCF
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF
 {
     /// <summary>
     /// Represents the binding element that contains the message validation policy.

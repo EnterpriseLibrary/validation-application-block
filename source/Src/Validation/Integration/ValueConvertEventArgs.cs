@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnterpriseLibrary.Validation.Integration
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration
 {
     /// <summary>
     /// Provides data to perform custom value conversions in validation integration scenarios.

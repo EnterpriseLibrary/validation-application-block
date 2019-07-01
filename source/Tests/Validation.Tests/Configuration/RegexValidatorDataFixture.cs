@@ -1,17 +1,17 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Collections.Generic;
 using System.Configuration;
 using System.Text.RegularExpressions;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Common.TestSupport.Configuration;
-using EnterpriseLibrary.Validation.Configuration;
-using EnterpriseLibrary.Validation.Tests.Properties;
-using EnterpriseLibrary.Validation.TestSupport.Configuration;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.TestSupport.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Tests.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Validation.Tests.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests.Configuration
 {
     [TestClass]
     public class RegexValidatorDataFixture
@@ -110,7 +110,7 @@ namespace EnterpriseLibrary.Validation.Tests.Configuration
             Assert.AreEqual(RegexResourceName1, ((RegexValidator)validator).PatternResourceName);
             Assert.AreEqual(typeof(Resources), ((RegexValidator)validator).PatternResourceType);
             Assert.AreEqual(RegexOptions.Multiline | RegexOptions.IgnoreCase, ((RegexValidator)validator).Options);
-            Assert.AreEqual(EnterpriseLibrary.Validation.Properties.Resources.RegexValidatorNonNegatedDefaultMessageTemplate, ((RegexValidator)validator).MessageTemplate);
+            Assert.AreEqual(Microsoft.Practices.EnterpriseLibrary.Validation.Properties.Resources.RegexValidatorNonNegatedDefaultMessageTemplate, ((RegexValidator)validator).MessageTemplate);
             Assert.AreEqual(false, ((RegexValidator)validator).Negated);
         }
 
@@ -132,7 +132,7 @@ namespace EnterpriseLibrary.Validation.Tests.Configuration
             Assert.AreEqual(RegexResourceName1, ((RegexValidator)validator).PatternResourceName);
             Assert.AreEqual(typeof(Resources), ((RegexValidator)validator).PatternResourceType);
             Assert.AreEqual(RegexOptions.Multiline | RegexOptions.IgnoreCase, ((RegexValidator)validator).Options);
-            Assert.AreEqual(EnterpriseLibrary.Validation.Properties.Resources.RegexValidatorNegatedDefaultMessageTemplate, ((RegexValidator)validator).MessageTemplate);
+            Assert.AreEqual(Microsoft.Practices.EnterpriseLibrary.Validation.Properties.Resources.RegexValidatorNegatedDefaultMessageTemplate, ((RegexValidator)validator).MessageTemplate);
             Assert.AreEqual(true, ((RegexValidator)validator).Negated);
         }
 

@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>EnterpriseLibrary.Validation.Integration.WinForms</AssemblyName>
-    <RootNamespace>EnterpriseLibrary.Validation.Integration.WinForms</RootNamespace>
+    <AssemblyName>$(PreAssemblyName).Validation.Integration.WinForms</AssemblyName>
+    <RootNamespace>$(PreAssemblyName).Validation.Integration.WinForms</RootNamespace>
     <AssemblyTitle>Enterprise Library Validation Application Block WinForms Integration</AssemblyTitle>
 
-    <PackageId>EnterpriseLibrary.Validation.Integration.WinForms</PackageId>
+    <PackageId>$(PrePackageName).Validation.Integration.WinForms$(PostPackageName)</PackageId>
     <Title>Enterprise Library Validation Application Block WinForms Integration</Title>
     <Description>This component allows the Validation Application Block to integrate with WinForms.</Description>
     <Summary>This component allows the Validation Application Block to integrate with WinForms.</Summary>
@@ -30,19 +30,19 @@
 
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
-    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
-	
-	<ProjectReference Include="..\Validation\Validation.csproj" />
+    <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+
+    <ProjectReference Include="..\Validation\Validation.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
-    
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
     <Reference Include="System.Configuration" />
-	<Reference Include="System.ComponentModel.DataAnnotations" />
-	<Reference Include="System.Design" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
@@ -67,10 +67,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-	
-	<EmbeddedResource Include="ValidationProvider.bmp" />
-	
-	<Compile Update="ValidationProvider.cs">
+
+    <EmbeddedResource Include="ValidationProvider.bmp" />
+
+    <Compile Update="ValidationProvider.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -95,19 +95,19 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
-    
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
-    
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
+
   </ItemGroup>
 
   <PropertyGroup>
     <OutputPath>$(SolutionDir)..\bin\$(Configuration)\</OutputPath>
     <DocumentationFile>$(SolutionDir)..\bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
-  
+
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <DebugSymbols>true</DebugSymbols>

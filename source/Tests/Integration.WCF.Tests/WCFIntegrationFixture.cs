@@ -1,13 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.ServiceModel;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.Hosting;
-using EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.Properties;
-using EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.TestService;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.Hosting;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.TestService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS
 {
     /// <summary>
     /// Summary description for WCFIntegrationFixture

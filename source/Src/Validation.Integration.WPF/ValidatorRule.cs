@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -8,10 +8,10 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Data;
-using EnterpriseLibrary.Validation.Integration.WPF.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Properties;
 using SWC = System.Windows.Controls;
 
-namespace EnterpriseLibrary.Validation.Integration.WPF
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF
 {
     /// <summary>
     /// Validation rule that performs validation of a converted value using the validators associated to the source

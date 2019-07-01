@@ -1,12 +1,12 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.TestSupport.TestClasses;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Validation.Tests.Validators
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests.Validators
 {
     /// <summary>
     /// Summary description for UserBuiltValidatorsFixture

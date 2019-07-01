@@ -1,6 +1,6 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
-namespace EnterpriseLibrary.Validation.Integration.WCF
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF
 {
     /// <summary>
     /// 
@@ -16,6 +16,6 @@ namespace EnterpriseLibrary.Validation.Integration.WCF
         /// 
         /// </summary>
         public const string FaultContractNamespace =
-            "http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation";
+            "http://www.microsoft.com/practices/Microsoft.Practices.EnterpriseLibrary/2007/01/wcf/validation";
     }
 }

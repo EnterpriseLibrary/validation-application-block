@@ -1,14 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Text;
-using EnterpriseLibrary.Validation.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Properties;
 using System.Reflection;
 using System.ComponentModel;
 using System.Globalization;
 
-namespace EnterpriseLibrary.Validation.Integration
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration
 {
     /// <summary>
     /// Encapsulates the logic used to link validation for integration scenarios.

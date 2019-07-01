@@ -1,8 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.ComponentModel;
 
-namespace EnterpriseLibrary.Validation.Integration.WinForms
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms
 {
     /// <summary>
     /// Provides a type converter to convert string objects to and from other representations and validates them.

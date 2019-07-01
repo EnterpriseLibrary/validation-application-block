@@ -1,9 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Windows.Forms;
 
-namespace EnterpriseLibrary.Validation.Integration.WinForms
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms
 {
     /// <summary>
     /// Contains the data for the <see cref="ValidationProvider.ValidationPerformed"/> event.

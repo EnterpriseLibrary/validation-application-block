@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Globalization;
@@ -6,10 +6,10 @@ using System.Reflection;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
-using EnterpriseLibrary.Validation.Integration.WCF.Properties;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 
-namespace EnterpriseLibrary.Validation.Integration.WCF
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF
 {
     /// <summary>
     /// The behavior class that set up the validation contract behavior

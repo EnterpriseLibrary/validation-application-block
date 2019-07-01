@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
-namespace EnterpriseLibrary.Validation.Integration.WCF
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF
 {
     /// <summary>
     /// Indicates that an implementation service class will use message validation constraints. 

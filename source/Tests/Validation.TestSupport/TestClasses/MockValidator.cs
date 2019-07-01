@@ -1,12 +1,12 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Text;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.TestSupport.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.Configuration;
 
-namespace EnterpriseLibrary.Validation.TestSupport.TestClasses
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses
 {
     [ConfigurationElementType(typeof(MockValidatorData))]
     public class MockValidator : MockValidator<object>

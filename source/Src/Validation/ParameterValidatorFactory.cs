@@ -1,8 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Reflection;
 
-namespace EnterpriseLibrary.Validation
+namespace Microsoft.Practices.EnterpriseLibrary.Validation
 {
     /// <summary>
     /// A special factory class that creates Validator objects based on

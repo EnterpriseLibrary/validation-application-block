@@ -1,17 +1,17 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.Integration.WinForms.Tests.TestClasses;
-using EnterpriseLibrary.Validation.TestSupport.TestClasses;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms.Tests.TestClasses;
+using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Validation.Integration.WinForms.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms.Tests
 {
     [TestClass]
     public class ValidationProviderFixture

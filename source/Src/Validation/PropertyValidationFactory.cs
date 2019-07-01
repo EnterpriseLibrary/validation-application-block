@@ -1,15 +1,15 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.Configuration;
-using EnterpriseLibrary.Validation.Properties;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 
-namespace EnterpriseLibrary.Validation
+namespace Microsoft.Practices.EnterpriseLibrary.Validation
 {
     /// <summary>
     /// Factory for creating <see cref="Validator"/> objects for properties.

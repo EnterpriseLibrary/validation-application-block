@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>EnterpriseLibrary.Validation.Integration.WPF</AssemblyName>
-    <RootNamespace>EnterpriseLibrary.Validation.Integration.WPF</RootNamespace>
+    <AssemblyName>$(PreAssemblyName).Validation.Integration.WPF</AssemblyName>
+    <RootNamespace>$(PreAssemblyName).Validation.Integration.WPF</RootNamespace>
     <AssemblyTitle>Enterprise Library Validation Application Block Integration with WPF</AssemblyTitle>
 
-    <PackageId>EnterpriseLibrary.Validation.Integration.WPF</PackageId>
+    <PackageId>$(PrePackageName).Validation.Integration.WPF$(PostPackageName)</PackageId>
     <Title>Enterprise Library Validation Application Block Integration with WPF</Title>
     <Description>This component allows the Validation Application Block to integrate with WPF.</Description>
     <Summary>This component allows the Validation Application Block to integrate with WPF.</Summary>
@@ -30,16 +30,16 @@
 
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
-    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+    <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
 
     <ProjectReference Include="..\Validation\Validation.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
 
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Xaml" />
@@ -89,11 +89,11 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
 
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
 
   </ItemGroup>
 

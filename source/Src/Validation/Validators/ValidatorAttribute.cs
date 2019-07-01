@@ -1,8 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 
-namespace EnterpriseLibrary.Validation.Validators
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Validators
 {
     /// <summary>
     /// Describes the validation logic that must be applied to a language element when

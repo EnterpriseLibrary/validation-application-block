@@ -1,13 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.Configuration;
-using EnterpriseLibrary.Validation.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Properties;
 using System.Globalization;
 
-namespace EnterpriseLibrary.Validation.Validators
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Validators
 {
     /// <summary>
     /// Aggregates a set of <see cref="Validator"/> instances, performing validation by allowing each validator to perform its own.

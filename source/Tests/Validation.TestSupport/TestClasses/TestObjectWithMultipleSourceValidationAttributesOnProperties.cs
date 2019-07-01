@@ -1,8 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.ComponentModel.DataAnnotations;
 
-namespace EnterpriseLibrary.Validation.TestSupport.TestClasses
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses
 {
     public class TestObjectWithMultipleSourceValidationAttributesOnProperties
     {

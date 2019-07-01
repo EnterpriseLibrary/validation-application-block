@@ -1,12 +1,12 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
-using EnterpriseLibrary.Validation.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Properties;
 
-namespace EnterpriseLibrary.Validation
+namespace Microsoft.Practices.EnterpriseLibrary.Validation
 {
     /// <summary>
     /// Creates <see cref="ValueAccess"/> objects for member descriptors.

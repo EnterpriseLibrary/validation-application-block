@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
 using System.ServiceModel.Configuration;
 using Configuration_ConfigurationProperty=System.Configuration.ConfigurationProperty;
 
-namespace EnterpriseLibrary.Validation.Integration.WCF
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF
 {
     /// <summary>
     /// Represents a configuration element that specifies validation features 

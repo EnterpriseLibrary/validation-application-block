@@ -1,12 +1,12 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 
-namespace EnterpriseLibrary.Validation.TestSupport.TestClasses
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses
 {
     public class CreditCardNumberValidator : RegexValidator
     {

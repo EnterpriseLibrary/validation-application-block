@@ -1,16 +1,16 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.Configuration;
-using EnterpriseLibrary.Validation.Properties;
-using EnterpriseLibrary.Validation.TestSupport;
-using EnterpriseLibrary.Validation.TestSupport.TestClasses;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport;
+using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Validation.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
 {
     [TestClass]
     public class NotNullValidatorFixture

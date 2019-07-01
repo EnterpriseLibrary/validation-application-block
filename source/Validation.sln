@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
@@ -158,7 +158,7 @@ Global
 		{F2B37E3C-5C7C-468A-8497-AD0A13A1005B} = {C6D8F857-CF82-4059-A67D-7595B38CC637}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.1.8\lib\NET45
+		Microsoft.Practices.EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\Microsoft.Practices.EnterpriseLibrary.Common.6.1.8\lib\NET45
 		SolutionGuid = {E9EE81C4-9C6D-4FD1-8FB1-1185A9FF07BE}
 	EndGlobalSection
 	GlobalSection(TextTemplating) = postSolution

@@ -1,14 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Diagnostics;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using EnterpriseLibrary.Validation.TestSupport.TestClasses;
+using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 
-namespace EnterpriseLibrary.Validation.Integration.AspNet.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.Tests
 {
     public class WebIntegrationFixtureBase
     {

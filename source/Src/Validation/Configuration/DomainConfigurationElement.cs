@@ -1,15 +1,15 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Text;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Common.Configuration.Design;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
 
-namespace EnterpriseLibrary.Validation.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Configuration
 {
     /// <summary>
-    /// Represents an individual domain element for a <see cref="EnterpriseLibrary.Validation.Validators.DomainValidator{T}"/>.
+    /// Represents an individual domain element for a <see cref="Microsoft.Practices.EnterpriseLibrary.Validation.Validators.DomainValidator{T}"/>.
     /// </summary>
     [ResourceDescription(typeof(DesignResources), "DomainConfigurationElementDescription")]
     [ResourceDisplayName(typeof(DesignResources), "DomainConfigurationElementDisplayName")]

@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 
-namespace EnterpriseLibrary.Validation
+namespace Microsoft.Practices.EnterpriseLibrary.Validation
 {
     ///<summary>
     /// Abstract validator factory for creating validators for a specific type.

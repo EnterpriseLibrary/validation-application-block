@@ -1,14 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.Validators;
-using EnterpriseLibrary.Common.Configuration.Design;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
 using System.ComponentModel;
 
-namespace EnterpriseLibrary.Validation.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Configuration
 {
     /// <summary>
     /// Configuration object to describe an instance of class <see cref="AndCompositeValidator"/>.

@@ -1,10 +1,10 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 
-namespace EnterpriseLibrary.Validation.Integration.WPF.Tests
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
 {
     public class ValidatedObject : INotifyPropertyChanged
     {

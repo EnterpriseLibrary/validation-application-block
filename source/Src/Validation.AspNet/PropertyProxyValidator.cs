@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.ComponentModel;
@@ -6,9 +6,9 @@ using System.Globalization;
 using System.Text;
 using System.Web.Compilation;
 using System.Web.UI.WebControls;
-using EnterpriseLibrary.Validation.Integration.AspNet.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.Properties;
 
-namespace EnterpriseLibrary.Validation.Integration.AspNet
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet
 {
     /// <summary>
     /// Performs validation on a control's value using the validation specified on the property of <see cref="System.Type"/>.

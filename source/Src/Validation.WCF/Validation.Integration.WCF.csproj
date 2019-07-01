@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>EnterpriseLibrary.Validation.Integration.WCF</AssemblyName>
-    <RootNamespace>EnterpriseLibrary.Validation.Integration.WCF</RootNamespace>
+    <AssemblyName>$(PreAssemblyName).Validation.Integration.WCF</AssemblyName>
+    <RootNamespace>$(PreAssemblyName).Validation.Integration.WCF</RootNamespace>
     <AssemblyTitle>Enterprise Library Validation Application Block Integration with WCF</AssemblyTitle>
 
-    <PackageId>EnterpriseLibrary.Validation.Integration.WCF</PackageId>
+    <PackageId>$(PrePackageName).Validation.Integration.WCF$(PostPackageName)</PackageId>
     <Title>Enterprise Library Validation Application Block Integration with WCF</Title>
     <Description>This component allows the Validation Application Block to integrate with WCF.</Description>
     <Summary>This component allows the Validation Application Block to integrate with WCF.</Summary>
@@ -30,15 +30,15 @@
 
   <ItemGroup>
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
-    <PackageReference Include="EnterpriseLibrary.Common" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
+    <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
 	
 	<ProjectReference Include="..\Validation\Validation.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
     <Reference Include="System.ComponentModel.DataAnnotations" />
 	<Reference Include="System.configuration" />
 	<Reference Include="System.Runtime.Serialization" />
@@ -87,11 +87,11 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.0'">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
     
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' AND '$(TargetFramework)' != 'netcoreapp2.0'">
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
     
   </ItemGroup>
 

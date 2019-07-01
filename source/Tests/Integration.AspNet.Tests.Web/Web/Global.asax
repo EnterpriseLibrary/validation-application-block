@@ -1,11 +1,11 @@
-﻿<%@ Application Language="C#" %>
+<%@ Application Language="C#" %>
 
 <script runat="server">
 
     void Application_Start(object sender, EventArgs e) 
     {
         // Code that runs on application startup
-        EnterpriseLibrary.Validation.ValidationFactory.SetDefaultConfigurationValidatorFactory(new EnterpriseLibrary.Common.Configuration.SystemConfigurationSource(false));
+        Microsoft.Practices.EnterpriseLibrary.Validation.ValidationFactory.SetDefaultConfigurationValidatorFactory(new Microsoft.Practices.EnterpriseLibrary.Common.Configuration.SystemConfigurationSource(false));
     }
     
     void Application_End(object sender, EventArgs e) 

@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
-using EnterpriseLibrary.Validation.TestSupport.TestClasses;
+using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Validation.Tests.Validators
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests.Validators
 {
     [TestClass]
     public class ValidatorFixture

@@ -1,14 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Configuration;
 using System.Globalization;
 using System.Reflection;
-using EnterpriseLibrary.Common.Configuration.Design;
-using EnterpriseLibrary.Validation.Properties;
-using EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Properties;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 
-namespace EnterpriseLibrary.Validation.Configuration
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Configuration
 {
     /// <summary>
     /// Represents a <see cref="PropertyComparisonValidator"/>.

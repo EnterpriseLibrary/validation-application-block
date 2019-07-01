@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.ServiceModel;
-using EnterpriseLibrary.Common.Configuration;
-using EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.TestService;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.TestService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS
 {
     /// <summary>
     /// Tests to check if the ruleset specification in the ValidationBehavior atttribute

@@ -1,9 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
-namespace EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.TestService
+namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.Tests.VSTS.TestService
 {
     [MessageContract]
     internal class AddCustomerResponse
