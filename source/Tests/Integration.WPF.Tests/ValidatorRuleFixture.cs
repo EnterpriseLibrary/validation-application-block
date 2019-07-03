@@ -15,7 +15,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            ValidationFactory.SetDefaultConfigurationValidatorFactory(new SystemConfigurationSource(false));
+            using (var configSource = new SystemConfigurationSource(false))
+            {
+                ValidationFactory.SetDefaultConfigurationValidatorFactory(configSource);
+            }
         }
 
         [TestCleanup]
@@ -24,14 +27,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             ValidationFactory.Reset();
         }
 
-        [TestMethod]
+        [STATestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void CreatingValidatorRuleWithNullBindingExpressionThrows()
         {
             new ValidatorRule(null);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyInvalidStringValidatedProperty()
         {
             var instance = new ValidatedObject { };
@@ -50,7 +53,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsTrue(SWC.Validation.GetErrors(textBox)[0].ErrorContent.ToString().Contains("invalid string"));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyStringValidatedProperty()
         {
             var instance = new ValidatedObject { };
@@ -67,7 +70,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsFalse(SWC.Validation.GetHasError(textBox));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyInvalidConvertedValidatedProperty()
         {
             var instance = new ValidatedObject { };
@@ -86,7 +89,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsTrue(SWC.Validation.GetErrors(textBox)[0].ErrorContent.ToString().Contains("invalid int"));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void NonConvertedValueIsNotValidatedForConvertedValidatedProperty()
         {
             var instance = new ValidatedObject { };
@@ -110,7 +113,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsFalse(SWC.Validation.GetErrors(textBox)[0].ErrorContent.ToString().Contains("invalid int"));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyConvertedValidatedProperty()
         {
             var instance = new ValidatedObject { };
@@ -127,7 +130,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsFalse(SWC.Validation.GetHasError(textBox));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyConvertedNonValidatedProperty()
         {
             var instance = new ValidatedObject { };
@@ -145,14 +148,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(15, instance.NonValidatedProperty);
         }
 
-        [TestMethod]
+        [STATestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void SettingSourceTypeToNullThrows()
         {
             new ValidatorRule { SourceType = null };
         }
 
-        [TestMethod]
+        [STATestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void SettingSourceTypeOnARuleInitializedWithABindingExpressionThrows()
         {
@@ -163,14 +166,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             new ValidatorRule(bindingExpression) { SourceType = typeof(ValidatedObject) };
         }
 
-        [TestMethod]
+        [STATestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void SettingSourcePropertyNameToNullThrows()
         {
             new ValidatorRule { SourcePropertyName = null };
         }
 
-        [TestMethod]
+        [STATestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void SettingSourcePropertyNameOnARuleInitializedWithABindingExpressionThrows()
         {
@@ -181,7 +184,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             new ValidatorRule(bindingExpression) { SourcePropertyName = "NonValidatedProperty" };
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanValidateWithExplicitlySetTypeAndProperty()
         {
             var instance = new ValidatedObject { };
@@ -204,7 +207,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsTrue(SWC.Validation.GetErrors(textBox)[0].ErrorContent.ToString().Contains("invalid string"));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatingWithARuleWithNoTypeSetThrows()
         {
             var instance = new ValidatedObject { };
@@ -229,7 +232,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             }
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatingWithARuleWithNoSourcePropertySetThrows()
         {
             var instance = new ValidatedObject { };
@@ -254,7 +257,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             }
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatingWithARuleWithInvalidSourcePropertySetThrows()
         {
             var instance = new ValidatedObject { };
@@ -281,7 +284,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
         }
 
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyInvalidStringValidatedPropertyWithMultipleSources()
         {
             var instance = new ValidatedObject { };
@@ -309,7 +312,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsTrue(SWC.Validation.GetErrors(textBox)[0].ErrorContent.ToString().Contains("invalid string: data annotations"));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyInvalidStringValidatedPropertyWithFilteredSources()
         {
             var instance = new ValidatedObject { };
@@ -338,7 +341,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
         }
 
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyInvalidStringValidatedPropertyUsingDefaultRuleset()
         {
             var instance = new ValidatedObject { };
@@ -361,7 +364,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsFalse(SWC.Validation.GetErrors(textBox)[0].ErrorContent.ToString().Contains("invalid string ruleset"));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ValidatesBindingForPropertyInvalidStringValidatedPropertyUsingNonDefaultRuleset()
         {
             var instance = new ValidatedObject { };

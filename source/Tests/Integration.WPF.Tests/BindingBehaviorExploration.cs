@@ -10,7 +10,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
     [TestClass]
     public class BindingBehaviorExploration
     {
-        [TestMethod]
+        [STATestMethod]
         public void BindingSetsValue()
         {
             var source = new BindingTestSource { SourceProperty = 100 };
@@ -31,7 +31,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsFalse(SWC.Validation.GetHasError(target));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void BindingLogsErrorIfValueIfValueConversionFails()
         {
             var source = new BindingTestSource { SourceProperty = 100 };
@@ -52,7 +52,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsTrue(SWC.Validation.GetHasError(target));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void BindingLogsErrorIfValueConversionFailsAndBindingObservesExceptions()
         {
             var source = new BindingTestSource { SourceProperty = 100 };
@@ -74,7 +74,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsTrue(SWC.Validation.GetHasError(target));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void BindingForPropertyInvalidPathIsIgnoredIfNotThrowingExceptions()
         {
             var source = new BindingTestSource { SourceProperty = 100 };
@@ -93,7 +93,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsFalse(SWC.Validation.GetHasError(target));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ClearingABinding()
         {
             var source = new BindingTestSource { SourceProperty = 100 };
@@ -118,7 +118,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsFalse(SWC.Validation.GetHasError(target));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void DataItemIsByDefault()
         {
             var target = new BindingTestTarget();
@@ -136,7 +136,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("SourceProperty", bindingExpression.ParentBinding.Path.Path);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void DataItemIsDataContextIfSourceIsNotExplicitlySet()
         {
             var target = new BindingTestTarget();
@@ -154,7 +154,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("SourceProperty", bindingExpression.ParentBinding.Path.Path);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void DataItemIsSourceIfExplicitlySet()
         {
             var target = new BindingTestTarget();
@@ -174,7 +174,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("SourceProperty", bindingExpression.ParentBinding.Path.Path);
         }
 
-        public class BindingTestTarget : FrameworkElement
+        private class BindingTestTarget : FrameworkElement
         {
             public static readonly DependencyProperty TargetPropertyProperty =
                 DependencyProperty.Register(
@@ -189,7 +189,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             }
         }
 
-        public class BindingTestSource
+        private class BindingTestSource
         {
             public int SourceProperty { get; set; }
         }

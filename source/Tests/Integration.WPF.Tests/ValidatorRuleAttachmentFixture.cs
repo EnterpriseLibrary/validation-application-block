@@ -18,7 +18,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            ValidationFactory.SetDefaultConfigurationValidatorFactory(new SystemConfigurationSource(false));
+            using (var configSource = new SystemConfigurationSource(false))
+            {
+                ValidationFactory.SetDefaultConfigurationValidatorFactory(configSource);
+            }
         }
 
         [TestCleanup]
@@ -27,7 +30,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             ValidationFactory.Reset();
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void SettingTheAttachedPropertyToTheNameOfABoundPropertyOnAnInitializedElementAddsValidatorRuleToTheReferencedBinding()
         {
             var textBox = new TextBox();
@@ -45,7 +48,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(1, binding.ValidationRules.OfType<ValidatorRule>().Count());
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void SettingTheAttachedPropertyToTheNameOfABoundPropertyOnANonInitializedElementDoesNotAddValidatorRuleToTheReferencedBinding()
         {
             var textBox = new TextBox();
@@ -62,7 +65,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(0, binding.ValidationRules.OfType<ValidatorRule>().Count());
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void SettingTheAttachedPropertyToTheNameOfABoundPropertyOnANonInitializedElementAddsValidatorRuleToTheReferencedBindingOnInitialize()
         {
             var textBox = new TextBox();
@@ -81,7 +84,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(1, binding.ValidationRules.OfType<ValidatorRule>().Count());
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ClearingTheAttachedPropertyRemovesTheValidationRule()
         {
             var textBox = new TextBox();
@@ -103,7 +106,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(0, binding.ValidationRules.OfType<ValidatorRule>().Count());
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void ChangingTheAttachedPropertyRemovesTheValidationRule()
         {
             var textBox = new TextBox();
@@ -134,7 +137,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(1, binding2.ValidationRules.OfType<ValidatorRule>().Count());
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void BindingForPropertyPropertyNamedInAttachedProperyIsValidatedForInvalidValue()
         {
             var instance = new ValidatedObject();
@@ -161,7 +164,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsTrue(SWC.Validation.GetHasError(textBox));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void BindingForPropertyPropertyNamedInAttachedProperyIsValidatedForValidValue()
         {
             var instance = new ValidatedObject();
@@ -188,7 +191,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.IsFalse(SWC.Validation.GetHasError(textBox));
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanSetAValidationSpecificationSourceBeforeSettingTheBindingForPropertyProperty()
         {
             var textBox = new TextBox();
@@ -209,7 +212,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(ValidationSpecificationSource.Attributes, rule.ValidationSpecificationSource);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanSetAValidationSpecificationSourceAfterSettingTheBindingForPropertyProperty()
         {
             var textBox = new TextBox();
@@ -230,7 +233,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(ValidationSpecificationSource.Attributes, rule.ValidationSpecificationSource);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanSetARulesetNameBeforeSettingTheBindingForPropertyProperty()
         {
             var textBox = new TextBox();
@@ -251,7 +254,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("Ruleset", rule.RulesetName);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanSetARulesetNameAfterSettingTheBindingForPropertyProperty()
         {
             var textBox = new TextBox();
@@ -272,7 +275,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("Ruleset", rule.RulesetName);
         }
 
-        [TestMethod]
+        [STATestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void SettingTheAttachedPropertyToAValueThatIsNotADependencyPropertyNameThrows()
         {
@@ -283,7 +286,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Validate.SetBindingForProperty(textBox, "InvalidPropertyName");
         }
 
-        [TestMethod]
+        [STATestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void SettingTheAttachedPropertyTheNameOfAnUnboundDependencyPropertyThrows()
         {
@@ -294,7 +297,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Validate.SetBindingForProperty(textBox, "Text");
         }
 
-        [TestMethod]
+        [STATestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void SettingTheAttachedPropertyTheNameOfAnDependencyPropertyWithAComplexPathBindingThrows()
         {
@@ -307,7 +310,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
         }
 
 
-        [TestMethod]
+        [STATestMethod]
         public void AttachingValidationToPropertyWithMultiBindingAddsRulesToTheLeafLevelBindings()
         {
             var textBox = new TextBox();
@@ -338,7 +341,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual(1, binding2.ValidationRules.OfType<ValidatorRule>().Count());
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void AttachingValidationToPropertyWithPriorityBindingAddsRulesToTheLeafLevelBindings()
         {
             var textBox = new TextBox();
