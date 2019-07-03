@@ -1,11 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>net45;net46;net47;netcoreapp3.0</TargetFrameworks>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup>
