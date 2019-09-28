@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation Application Block", "Validation Application Block", "{C6D8F857-CF82-4059-A67D-7595B38CC637}"
 	ProjectSection(FolderStartupServices) = postProject
@@ -40,6 +39,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation.TestSupport", "Tests\Validation.TestSupport\Validation.TestSupport.csproj", "{3D3C0BEE-437E-487C-B9B3-46288AE933B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation.Integration.WPF", "Src\Validation.Integration.WPF\Validation.Integration.WPF.csproj", "{F2B37E3C-5C7C-468A-8497-AD0A13A1005B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation.Integration.WPF.Tests.VSTS", "Tests\Integration.WPF.Tests\Validation.Integration.WPF.Tests.VSTS.csproj", "{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +142,18 @@ Global
 		{F2B37E3C-5C7C-468A-8497-AD0A13A1005B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2B37E3C-5C7C-468A-8497-AD0A13A1005B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F2B37E3C-5C7C-468A-8497-AD0A13A1005B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Debug|.NET.Build.0 = Debug|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Release|.NET.ActiveCfg = Release|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Release|.NET.Build.0 = Release|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,9 +169,9 @@ Global
 		{2364A790-3FEF-4CBC-B0DE-A6C9FD9922F4} = {BEB677A0-0530-4889-B6E6-CB45E732398A}
 		{3D3C0BEE-437E-487C-B9B3-46288AE933B9} = {BEB677A0-0530-4889-B6E6-CB45E732398A}
 		{F2B37E3C-5C7C-468A-8497-AD0A13A1005B} = {C6D8F857-CF82-4059-A67D-7595B38CC637}
+		{18B678FE-E8BB-4B8B-B152-44D94BE5EB7B} = {BEB677A0-0530-4889-B6E6-CB45E732398A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		Microsoft.Practices.EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\Microsoft.Practices.EnterpriseLibrary.Common.6.1.8\lib\NET45
 		SolutionGuid = {E9EE81C4-9C6D-4FD1-8FB1-1185A9FF07BE}
 	EndGlobalSection
 	GlobalSection(TextTemplating) = postSolution

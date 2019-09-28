@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="EnterpriseLibrary" ToolsVersion="11.0">
+<RuleSet Name="EnterpriseLibrary" ToolsVersion="16.0">
   <Include Path="globalizationrules.ruleset" Action="Default" />
   <Include Path="minimumrecommendedrules.ruleset" Action="Default" />
+  <Rules AnalyzerId="Microsoft.CodeQuality.CSharp.Analyzers" RuleNamespace="Microsoft.CodeQuality.CSharp.Analyzers">
+    <Rule Id="CA1507" Action="Info" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.NetCore.CSharp.Analyzers" RuleNamespace="Microsoft.NetCore.CSharp.Analyzers">
+    <Rule Id="CA1824" Action="Info" />
+  </Rules>
 </RuleSet>

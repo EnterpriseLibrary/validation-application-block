@@ -13,7 +13,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            ValidationFactory.SetDefaultConfigurationValidatorFactory(new SystemConfigurationSource(false));
+            using (var configSource = new SystemConfigurationSource(false))
+            {
+                ValidationFactory.SetDefaultConfigurationValidatorFactory(configSource);
+            }
         }
 
         [TestCleanup]
@@ -22,7 +25,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             ValidationFactory.Reset();
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanValidateWithExplicitlySuppliedValidatorRule()
         {
             var control = new ControlWithExplicitRule();
@@ -35,7 +38,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("invalid string", SWC.Validation.GetErrors(textBox).First().ErrorContent);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanValidateWithValidatorRuleSpecifiedWithAttachedProperties()
         {
             var control = new ControlWithExplicitRule();
@@ -48,7 +51,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("invalid string", SWC.Validation.GetErrors(textBox).First().ErrorContent);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanValidateWithValidatorRuleSpecifiedWithAttachedPropertiesUsingRuleset()
         {
             var control = new ControlWithImplicitRuleWithRulesetAndSource();
@@ -61,7 +64,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("invalid string ruleset", SWC.Validation.GetErrors(textBox).First().ErrorContent);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void CanValidateWithValidatorRuleSpecifiedWithAttachedPropertiesUsingSpecificationSource()
         {
             var control = new ControlWithImplicitRuleWithRulesetAndSource();
@@ -75,7 +78,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
         }
 
 
-        [TestMethod]
+        [STATestMethod]
         public void TwoWayBindingFiresValidationWhenUIChanges()
         {
             var control = new ControlWithImplicitRuleWithRulesetAndSource();
@@ -88,7 +91,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.Tests
             Assert.AreEqual("String must be one character", SWC.Validation.GetErrors(textBox).First().ErrorContent);
         }
 
-        [TestMethod]
+        [STATestMethod]
         public void TwoWayBindingFiresValidationWhenSourceChanges()
         {
             var control = new ControlWithImplicitRuleWithRulesetAndSource();

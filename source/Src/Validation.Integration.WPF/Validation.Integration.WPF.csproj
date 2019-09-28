@@ -1,11 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>net45;net46;net47;netcoreapp3.0</TargetFrameworks>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -22,6 +24,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\EnterpriseLibrary.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
+    <CodeAnalysisRuleSet>..\..\EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -29,6 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
     <ProjectReference Include="$(EntLibCommon)" Condition="Exists('$(EntLibCommon)') AND '$(EntLibDependencyType)' == 'Project'" />
     <PackageReference Include="$(PrePackageName).Common$(PostPackageName)" Version="$(EntLibCommonVersion)" Condition="!Exists('$(EntLibCommon)') OR '$(EntLibDependencyType)' == 'Package'" />
 
@@ -111,10 +115,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRules>
-    </CodeAnalysisRules>
-    <CodeAnalysisRuleSet>..\..\EnterpriseLibrary.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 
@@ -126,7 +126,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 </Project>
