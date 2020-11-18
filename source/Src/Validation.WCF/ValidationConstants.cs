@@ -16,6 +16,6 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF
         /// 
         /// </summary>
         public const string FaultContractNamespace =
-            "http://www.microsoft.com/practices/Microsoft.Practices.EnterpriseLibrary/2007/01/wcf/validation";
+            "http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation";
     }
 }
