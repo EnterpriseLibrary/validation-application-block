@@ -25,6 +25,7 @@
     <SystemConfigurationConfigurationManagerVersion>4.5.0</SystemConfigurationConfigurationManagerVersion>
     <SystemComponentModelAnnotationsVersion>4.5.*</SystemComponentModelAnnotationsVersion>
     <MicrosoftAspNetCoreMvcCoreVersion>2.0.*</MicrosoftAspNetCoreMvcCoreVersion>
+    <SystemServiceModelPrimitivesVersion>4.8.0</SystemServiceModelPrimitivesVersion>
   </PropertyGroup>
 
   <PropertyGroup>
