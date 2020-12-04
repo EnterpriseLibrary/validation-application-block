@@ -2,7 +2,7 @@
   <Import Project="..\..\..\package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>net45;net46;net47;netstandard2.0;netcoreapp2.0;netcoreapp3.0</TargetFrameworks>
 
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
@@ -36,6 +36,12 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+    <PackageReference Include="System.ServiceModel.Primitives" Version="$(SystemServiceModelPrimitivesVersion)" />
+    <Compile Remove="ValidationBehavior.cs" />
+    <Compile Remove="ValidationBehaviorAttribute.cs" />
+    <Compile Remove="ValidationBindingElementExtension.cs" />
+    <Compile Remove="ValidationElement.cs" />
+    <Compile Remove="ValidationParameterInspector.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
