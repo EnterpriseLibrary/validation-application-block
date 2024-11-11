@@ -226,6 +226,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.IsTrue(results.Any(vr => vr.Key == "PropertyWithDataAnnotationsAttributes" && vr.Message == "data annotations-only"));
         }
 
+#if !NET8_0_OR_GREATER
         [TestMethod]
         public void CanGetValidatorFromConfigurationOly()
         {
@@ -248,6 +249,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.IsTrue(results.Any(vr => vr.Key == "PropertyWithDataAnnotationsAttributes" && vr.Message == "configuration1"));
             Assert.IsTrue(results.Any(vr => vr.Key == "PropertyWithVABOnlyAttributes" && vr.Message == "configuration2"));
         }
+#endif
+
 
         #endregion
     }

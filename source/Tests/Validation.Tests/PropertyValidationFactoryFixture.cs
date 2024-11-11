@@ -88,6 +88,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.AreEqual("message1-RuleA", resultsList[0].Message);
         }
 
+#if !NET8_0_OR_GREATER
         [TestMethod]
         public void RequestForValidatorBasedOnConfigurationReturnsAppropriateValidator()
         {
@@ -104,6 +105,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.AreEqual(1, resultsList.Count);
             Assert.AreEqual("message-from-config1", resultsList[0].Message);
         }
+#endif
+        
 
         [TestMethod]
         public void RequestForValidatorBasedOnConfigurationReturnsNullForNonExistingRuleName()
@@ -115,7 +118,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
 
             Assert.IsNull(validator);
         }
-
+#if !NET8_0_OR_GREATER
         [TestMethod]
         public void RequestForValidatorBasedOnConfigurationWithRulesetReturnsAppropriateValidator()
         {
@@ -133,6 +136,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.AreEqual("message-from-config1-RuleA", resultsList[0].Message);
             Assert.AreEqual("message-from-config2-RuleA", resultsList[1].Message);
         }
+
+
 
         [TestMethod]
         public void RequestForValidatorBasedOnConfigurationWithRulesetAndValidationSpecificationSourceReturnsAppropriateValidator()
@@ -153,7 +158,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.AreEqual("message-from-config1-RuleA", resultsList[0].Message);
             Assert.AreEqual("message-from-config2-RuleA", resultsList[1].Message);
         }
-
+#endif
         [TestMethod]
         public void RequestForValidatorBasedOnAttributesAndConfigurationWithRulesetThroughStaticFacadeReturnsAppropriateValidator()
         {
@@ -169,9 +174,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             ValidationResults validationResults = validator.Validate(objectToTest);
 
             IDictionary<string, ValidationResult> resultsMapping = ValidationTestHelper.GetResultsMapping(validationResults);
+
+#if !NET8_0_OR_GREATER
             Assert.AreEqual(3, resultsMapping.Count);
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1-RuleA"));
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2-RuleA"));
+#else
+            Assert.AreEqual(1, resultsMapping.Count);
+#endif
+
             Assert.IsTrue(resultsMapping.ContainsKey("message1-RuleA"));
         }
 

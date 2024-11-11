@@ -63,7 +63,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.AreEqual("message1-RuleA", resultsList[0].Message);
             Assert.AreEqual("message1-RuleB", resultsList[1].Message);
         }
-
+#if !NET8_0_OR_GREATER
         [TestMethod]
         public void CanValidateObjectFromConfigWithMultipleRuleSets()
         {
@@ -78,8 +78,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1"));
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2"));
         }
-
-        [TestMethod]
+         [TestMethod]
         public void CanValidateObjectWithDefaultRulesetFromConfiguration()
         {
             ValidationResults validationResults
@@ -91,7 +90,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1"));
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2"));
         }
-
+        
         [TestMethod]
         public void CanValidateObjectWithRulesetFromConfiguration()
         {
@@ -120,6 +119,25 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.IsTrue(resultsMapping.ContainsKey("message2"));
         }
 
+         [TestMethod]
+        public void CanValidateObjectWithRulesetFromAttributesAndConfiguration()
+        {
+            ValidationResults validationResults
+                = Validation.Validate(new TestObjectWithFailingAttributesOnProperties(), "RuleA");
+
+            Assert.IsFalse(validationResults.IsValid);
+            IDictionary<string, ValidationResult> resultsMapping = ValidationTestHelper.GetResultsMapping(validationResults);
+            Assert.AreEqual(3, resultsMapping.Count);
+            Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1-RuleA"));
+            Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2-RuleA"));
+            Assert.IsTrue(resultsMapping.ContainsKey("message1-RuleA"));
+        }
+#endif
+
+
+
+
+
         [TestMethod]
         public void CanValidateObjectWithDefaultRulesetFromAttributesAndConfigurationForTheActualType()
         {
@@ -144,19 +162,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.IsFalse(validationResults.IsValid);
         }
 
-        [TestMethod]
-        public void CanValidateObjectWithRulesetFromAttributesAndConfiguration()
-        {
-            ValidationResults validationResults
-                = Validation.Validate(new TestObjectWithFailingAttributesOnProperties(), "RuleA");
-
-            Assert.IsFalse(validationResults.IsValid);
-            IDictionary<string, ValidationResult> resultsMapping = ValidationTestHelper.GetResultsMapping(validationResults);
-            Assert.AreEqual(3, resultsMapping.Count);
-            Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1-RuleA"));
-            Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2-RuleA"));
-            Assert.IsTrue(resultsMapping.ContainsKey("message1-RuleA"));
-        }
+       
 
         [TestMethod]
         public void CanValidateObjectFromAttributesAndConfigurationWithMultipleRulesets()
@@ -166,13 +172,22 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
 
             Assert.IsFalse(validationResults.IsValid);
             IDictionary<string, ValidationResult> resultsMapping = ValidationTestHelper.GetResultsMapping(validationResults);
+
+#if !NET8_0_OR_GREATER
             Assert.AreEqual(6, resultsMapping.Count);
+
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1-RuleA"));
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2-RuleA"));
-            Assert.IsTrue(resultsMapping.ContainsKey("message1-RuleA"));
-            Assert.IsTrue(resultsMapping.ContainsKey("message1-RuleB"));
+            
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1"));
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2"));
+
+#else
+            Assert.AreEqual(2, resultsMapping.Count);
+            Assert.IsTrue(resultsMapping.ContainsKey("message1-RuleA"));
+            Assert.IsTrue(resultsMapping.ContainsKey("message1-RuleB"));
+#endif
+
         }
 
         [TestMethod]

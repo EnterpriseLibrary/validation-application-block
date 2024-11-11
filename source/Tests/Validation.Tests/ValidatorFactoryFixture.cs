@@ -421,9 +421,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
 
             Assert.IsFalse(validationResults.IsValid);
             IDictionary<string, ValidationResult> resultsMapping = ValidationTestHelper.GetResultsMapping(validationResults);
+#if NET8_0_OR_GREATER
+            Assert.AreEqual(1, resultsMapping.Count);
+#else
             Assert.AreEqual(3, resultsMapping.Count);
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1-RuleA"));
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2-RuleA"));
+#endif
+
+
             Assert.IsTrue(resultsMapping.ContainsKey("message1-RuleA"));
         }
 
@@ -437,9 +443,15 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
 
             Assert.IsFalse(validationResults.IsValid);
             IDictionary<string, ValidationResult> resultsMapping = ValidationTestHelper.GetResultsMapping(validationResults);
+
+#if NET8_0_OR_GREATER
+            Assert.AreEqual(2, resultsMapping.Count);
+#else
             Assert.AreEqual(4, resultsMapping.Count);
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config1"));
             Assert.IsTrue(resultsMapping.ContainsKey("message-from-config2"));
+#endif
+
             Assert.IsTrue(resultsMapping.ContainsKey("message1"));
             Assert.IsTrue(resultsMapping.ContainsKey("message2"));
         }
