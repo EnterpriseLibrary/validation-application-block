@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.Practices.EnterpriseLibrary.Validation.TestSupport.TestClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -240,7 +241,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.IsTrue(resultsMapping.ContainsKey("new 3"));
         }
 
-        [TestMethod]
+#if !NET8_0
+         [TestMethod]
         public void ResultsCanBeSerializedAndDeserialized()
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -275,5 +277,49 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests
             Assert.IsNull(resultsList[0].Target);
             Assert.IsNull(resultsList[0].Validator);
         }
+#else
+        [TestMethod]
+        public void ResultsCanBeSerializedAndDeserialized()
+        {
+            // Initialize the DataContractSerializer for the ValidationResults type.
+            var serializer = new DataContractSerializer(typeof(ValidationResults));
+            byte[] serializedResults = null;
+
+            // Prepare test data.
+            ValidationResults validationResults = new ValidationResults();
+            ValidationResult validationResult = new ValidationResult("message", this, "key", "tag", new MockValidator(false));
+            validationResults.AddResult(validationResult);
+
+            // Serialize the ValidationResults object to a byte array.
+            using (var binaryStream = new MemoryStream())
+            {
+                serializer.WriteObject(binaryStream, validationResults);
+                serializedResults = binaryStream.ToArray();
+            }
+
+            ValidationResults deserializedValidationResults = null;
+
+            // Deserialize the byte array back to a ValidationResults object.
+            using (var binaryStream = new MemoryStream(serializedResults))
+            {
+                deserializedValidationResults = (ValidationResults)serializer.ReadObject(binaryStream);
+            }
+
+            // Assertions to verify deserialization integrity.
+            Assert.IsNotNull(deserializedValidationResults);
+            Assert.AreNotSame(validationResults, deserializedValidationResults);
+
+            IList<ValidationResult> resultsList = ValidationTestHelper.GetResultsList(deserializedValidationResults);
+            Assert.AreEqual(1, resultsList.Count);
+            Assert.IsNotNull(resultsList[0]);
+            Assert.AreNotSame(validationResult, resultsList[0]);
+            Assert.AreEqual("message", resultsList[0].Message);
+            Assert.AreEqual("tag", resultsList[0].Tag);
+            Assert.AreEqual("key", resultsList[0].Key);
+            Assert.IsNull(resultsList[0].Target);
+            Assert.IsNull(resultsList[0].Validator);
+        }
+#endif
+       
     }
 }

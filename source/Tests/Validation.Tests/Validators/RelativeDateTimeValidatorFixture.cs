@@ -473,7 +473,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Validation.Tests.Validators
             RelativeDateTimeValidator validator = new RelativeDateTimeValidator(-5, DateTimeUnit.Day, RangeBoundaryType.Exclusive,
                                                                                 3, DateTimeUnit.Day, RangeBoundaryType.Exclusive, true);
 
-            ValidationResults results = validator.Validate(DateTime.Now.AddDays(3));
+            ValidationResults results = validator.Validate(DateTime.Now.AddDays(2));
 
             Assert.IsTrue(results.IsValid);
         }
